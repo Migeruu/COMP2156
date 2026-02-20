@@ -4,11 +4,11 @@
   "homepage": "https://Migeruu.github.io/COMP2156",
   "description": "",
   "main": "index.js",
-"scripts": {
-  "predeploy": "npm run build",
-  "deploy": "gh-pages -d build"
-  "test": "echo \"No tests yet\""
-},
+  "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
+    "test": "echo \"No tests yet\""
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
