@@ -1,4 +1,4 @@
-name: Node.js CI
+name: Node.js CI / Deploy
 
 on:
   push:
@@ -15,20 +15,30 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout code
+      # Checkout your repo
+      - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Set up Node.js
+      # Set up Node.js
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '20'
 
-      - name: Install dependencies
+      # Clean any old node_modules / package-lock.json
+      - name: Clean Node Modules
+        run: |
+          rm -rf node_modules package-lock.json
+
+      # Install dependencies fresh
+      - name: Install Dependencies
         run: npm install
 
+      # Build React app (ignore warnings breaking CI)
       - name: Build Project
         run: CI=false npm run build
 
+      # Deploy to GitHub Pages
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
         with:
